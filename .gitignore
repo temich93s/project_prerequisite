@@ -1,0 +1,12 @@
+# Maven — результаты сборки
+target/
+
+# IntelliJ IDEA — настройки IDE
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
+# Логи
+*.log
