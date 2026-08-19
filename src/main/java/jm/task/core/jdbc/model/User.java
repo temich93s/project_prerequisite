@@ -1,26 +1,25 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Table
+@Entity
+@Table(name = "user")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false, length = 255)
     private String name;
 
-    @Column
+    @Column(nullable = false, length = 255)
     private String lastName;
 
-    @Column
+    @Column(nullable = false)
     private Byte age;
 
-    public User() {
-
-    }
+    // Required by Hibernate
+    public User() {}
 
     @Override
     public String toString() {
