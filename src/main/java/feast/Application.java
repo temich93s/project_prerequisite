@@ -6,10 +6,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Application {
     public static void main(String[] args) {
-        ApplicationContext applicationContext =
-                new AnnotationConfigApplicationContext(AppConfig.class);
-        TraditionalFeast traditionalFeast =
-                applicationContext.getBean(TraditionalFeast.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        TraditionalFeast traditionalFeast = applicationContext.getBean(TraditionalFeast.class);
         System.out.println(traditionalFeast.getTraditionalFeast());
     }
 }

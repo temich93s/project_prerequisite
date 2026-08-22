@@ -1,7 +1,6 @@
 package feast.models;
 
 public class Duck2 {
-
     private Chicken3 chicken3;
 
     public Duck2(Chicken3 chicken3) {
