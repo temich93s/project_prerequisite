@@ -1,3 +1,5 @@
+package project;
+
 public class HelloWorld {
  
     private String message;
