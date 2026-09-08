@@ -16,7 +16,9 @@ public class UserDaoImp implements UserDao {
 
    @Override
    public void add(User user) {
-      sessionFactory.getCurrentSession().save(user);
+      if (isUserNotExist(user)) {
+         sessionFactory.getCurrentSession().save(user);
+      }
    }
 
    @Override
@@ -35,5 +37,25 @@ public class UserDaoImp implements UserDao {
       query.setParameter("model", model);
       query.setParameter("series", series);
       return query.getSingleResult();
+   }
+
+   private boolean isUserNotExist(User user) {
+      return sessionFactory.getCurrentSession()
+              .createQuery(
+                      "from User u " +
+                      "where u.firstName = :fistname " +
+                      "and u.lastName = :lastname " +
+                      "and u.email = :email " +
+                      "and u.car.model = :model " +
+                      "and u.car.series = :series",
+                      User.class
+              )
+              .setParameter("fistname", user.getFirstName())
+              .setParameter("lastname", user.getLastName())
+              .setParameter("email", user.getEmail())
+              .setParameter("model", user.getCar().getModel())
+              .setParameter("series", user.getCar().getSeries())
+              .getResultList()
+              .isEmpty();
    }
 }
